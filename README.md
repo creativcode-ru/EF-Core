@@ -11,4 +11,4 @@
 ## Razor Pages с Entity Framework Core в ASP.NET Core
 [Создание веб приложения Razor Pages](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)
 
-База данных создается в стандартном каталоге C:/Users/<user> . Для доступа к БД (просмотр, удаление) можно использовать SQL Server Management Studio (SSMS) - при подключении выбрать (localdb)\MSSQLLocalDB
+База данных создается в стандартном каталоге C:/Users/{user} . Для доступа к БД (просмотр, удаление) можно использовать SQL Server Management Studio (SSMS) - при подключении выбрать (localdb)\MSSQLLocalDB

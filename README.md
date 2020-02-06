@@ -24,5 +24,5 @@
 Добавить те же пакеты, что и в приложении `EF Core с Razor Pages`
 
 <p align="center">
-  <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="350" alt="">
+  <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">
 </p>

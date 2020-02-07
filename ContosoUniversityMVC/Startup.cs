@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using ContosoUniversityMVC.Data; //**
 using Microsoft.EntityFrameworkCore; //**
 
-
+// Ќачало работы с EF Core в веб-приложении MVC ASP.NET https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/intro?view=aspnetcore-3.1
 namespace ContosoUniversityMVC
 {
     public class Startup
@@ -28,6 +28,8 @@ namespace ContosoUniversityMVC
         {
             services.AddDbContext<SchoolContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
+            //по умолчанию, срок существовани€ объекта контекста соответствует сроку существовани€ веб-запроса. 
+
 
             services.AddControllersWithViews();
         }

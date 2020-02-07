@@ -27,3 +27,8 @@
 <p align="center">
   <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">
 </p>
+
+### [Реализация функциональности CRUD](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/crud?view=aspnetcore-3.1)
+● Настройка страницы сведений: представление Details для отображения списка Enrollments;  
+● Обновление страницы Create: настройка обработчика сбоев, защита от чрезмерной передачи данных;  
+● Обновление страницы редактирования: 

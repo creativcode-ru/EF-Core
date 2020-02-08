@@ -24,11 +24,11 @@
 
 Добавить те же пакеты, что и в приложении `EF Core с Razor Pages`
 
-<p align="center">
-  <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">
+<p align="center"> 
+  <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">  
 </p>
 
-### [Реализация функциональности CRUD](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/crud?view=aspnetcore-3.1)
+### [Реализация функциональности CRUD](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1)
 ● Настройка страницы сведений: представление Details для отображения списка Enrollments;  
 ● Обновление страницы Create: настройка обработчика сбоев, защита от чрезмерной передачи данных;  
 ● Обновление страницы редактирования: настройка HttpPost Edit, защита от чрезмерной передачи данных, вариант с предварительным чтением данных. Альтернативный код метода HttpPost Edit: создание и подключение.  
@@ -36,3 +36,14 @@
 ● Управление БД: закрытие подключений. Обработка транзакций: По умолчанию платформа Entity Framework реализует транзакции неявно. Если нужен дополнительный контроль, то см. в разделе [Транзакции](https://docs.microsoft.com/ru-ru/ef/core/saving/transactions).  
 ● Отключение отслеживания запросов: [метод `.AsNoTracking()`](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/crud?view=aspnetcore-3.1#no-tracking-queries)
 
+### [Cортировка, фильтрация и разбиение на страницы](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1)
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page/_static/paging.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+
+● Добавление ссылок для сортировки столбцов  
+● Добавление поля поиска. [Особенности работы при наличии слоя репозитария](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1#add-a-search-box). Особенности оптимизации SQL сервера при учете регистра строк.  
+● Разбиение по страницам. Учет фильтрации и сортировки при разбиении по страницам  
+● Создание страницы сведений. Группировка и расчеты.

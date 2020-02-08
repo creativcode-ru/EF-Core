@@ -47,3 +47,10 @@
 ● Добавление поля поиска. [Особенности работы при наличии слоя репозитария](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1#add-a-search-box). Особенности оптимизации SQL сервера при учете регистра строк.  
 ● Разбиение по страницам. Учет фильтрации и сортировки при разбиении по страницам  
 ● Создание страницы сведений. Группировка и расчеты.
+
+### [Функции миграций](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-3.1)
+● Создание первоначальной миграции. Чтобы избежать ошибок, воспользуйтесь командами PowerShell как в руководстве [Razor Pages EF](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#create-an-initial-migration). 
+Первая команда `Add-Migration InitialCreate` создаст файлы миграции, в вторая `Update-Database` создаст новую БД `SchoolContext2`  
+● Далее вернитесь к исходному руководству [Обзор методов Up и Down](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-3.1#examine-up-and-down-methods). Параметр имени миграции (в примере это "InitialCreate") используется в качестве имени файла и может быть любым.
+● Из Razor Pages EF: [Таблица журнала миграции в базе SQL](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#the-migrations-history-table), [Моментальный снимок модели данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#the-data-model-snapshot)  
+● Удаление миграции. Сначала надо откатить базу до предыдущей миграции, я сделал это в PowerShell командой [Update-Database -Migration 0](https://docs.microsoft.com/ru-ru/ef/core/miscellaneous/cli/powershell#update-database) -- таблицы, созданные предыдущей миграцией, удаены из БД. Для удаления файлов миграции из проекта я выполнил команду  [Remove-Migration](https://docs.microsoft.com/ru-ru/ef/core/miscellaneous/cli/powershell#remove-migration)

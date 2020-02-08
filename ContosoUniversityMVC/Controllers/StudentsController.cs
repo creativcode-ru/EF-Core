@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+
 using Microsoft.EntityFrameworkCore;
 using ContosoUniversityMVC.Data;
 using ContosoUniversityMVC.Models;
@@ -22,10 +23,71 @@ namespace ContosoUniversityMVC.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Students.ToListAsync());
+        public async Task<IActionResult> Index( string sortOrder,
+                                                string currentFilter,
+                                                string searchString,
+                                                int? pageNumber)
+        {//Добавление сортировки sortOrder, и поиска searchString
+
+            //параметры гиперссылок для формирования сортировки
+            ViewData["CurrentSort"] = sortOrder; //CurrentSort передает в представление порядок сортировки, поскольку он должен быть включен в ссылки перелистывания, чтобы сохранить порядок сортировки при переходе по страницам.
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            /* Если строка поиска изменяется во время перелистывания, то номер страницы должен быть сброшен на 1, 
+             * так как с новым фильтром изменится состав отображаемых данных. 
+             * Изменение строки поиска происходит при вводе в текстовое поле значения и нажатии на кнопку отправки. 
+             * В этом случае значение параметра searchString не null.
+             */
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+            /* CurrentFilter передает в представление текущую строку фильтра. 
+             * Это значение необходимо включить в ссылки для перелистывания, чтобы при смене страницы сохранить настройки фильтра, 
+             * кроме того, необходимо восстановить значение фильтра в текстовом поле после обновления страницы.
+             */
+
+            var students = from s in _context.Students  select s; //все данные, объект IQueryable, выполнение запроса отложено
+
+            //поиск по части имени или фамилии
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                       || s.FirstMidName.Contains(searchString));
+            }
+
+            switch (sortOrder) //дополняем запрос порядком сортировки
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.EnrollmentDate);
+                    break;
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.EnrollmentDate);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            int pageSize = 3;
+            return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));
+
+            //return View(await students.AsNoTracking().ToListAsync()); //выполняем запрос (ToListAsync) с отключением отслеживания (AsNoTracking)
+
+            //return View(await _context.Students.ToListAsync());
         }
+        /* Руководства консорциума W3C рекомендуют использовать метод GET, когда действие не приводит к обновлению - только чтение данных.
+         * Использование GET - позволяет добавлять условия запроса в закладки
+         */
 
         // GET: Students/Details/5
         public async Task<IActionResult> Details(int? id)

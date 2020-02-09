@@ -60,8 +60,10 @@
   <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model/_static/diagram.png?view=aspnetcore-3.1" width="400" alt="">
    </a>
 </p>
-● Настройка модели данных с помощью атрибутов.  
+● Настройка модели данных с помощью атрибутов.
+
 Если вы не делали миграции для БД, то сначала разберитесь с миграциями. Придется вернутся к первоначальным данным, которые задаются в классе DbInitializer (namespace ContosoUniversityMVC.Data).  
 Итак: Обнулите все миграции `Update-Database -Migration 0`, откройте БД и удалите оставшиеся таблицы, сначала таблицу связей Enrollment потом Course и Student.  
 Если вы уже редактировали атрибуты, то закоментируйте все атрибуты и создайте первоначальную миграцию `Add-Migration InitialCreate`, примените миграцию к БД `Update-Database` - будут созданы пустые таблицы. Запиустите приложение, и таблицы заполнятся из класса DbInitializer.  
 Добавьте отрубуты к классу Student и создайте миграцию `Add-Migration InitialCreate` -- убедитесь, что миграция нацелена на обновление таблиц. Обновите базу `Update-Database` и проверьте изменения в схеме таблицы Student
+

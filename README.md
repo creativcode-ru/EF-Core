@@ -65,5 +65,8 @@
 Если вы не делали миграции для БД, то сначала разберитесь с миграциями. Придется вернутся к первоначальным данным, которые задаются в классе DbInitializer (namespace ContosoUniversityMVC.Data).  
 Итак: Обнулите все миграции `Update-Database -Migration 0`, откройте БД и удалите оставшиеся таблицы, сначала таблицу связей Enrollment потом Course и Student.  
 Если вы уже редактировали атрибуты, то закоментируйте все атрибуты и создайте первоначальную миграцию `Add-Migration InitialCreate`, примените миграцию к БД `Update-Database` - будут созданы пустые таблицы. Запустите приложение, и таблицы заполнятся из класса DbInitializer.  
-Добавьте атрубуты к классу Student и создайте миграцию `Add-Migration MaxLengthOnNames` -- убедитесь, что миграция нацелена на обновление таблиц. Обновите базу `Update-Database` и проверьте изменения в схеме таблицы Student.
-
+Добавьте атрубуты к классу Student и создайте миграцию `Add-Migration MaxLengthOnNames` -- убедитесь, что миграция нацелена на обновление таблиц. Обновите базу `Update-Database` и проверьте изменения в схеме таблицы Student.  
+● [Связи "многие ко многим"](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-3.1#many-to-many-relationships)  
+Составной ключ - добавляется в классе SchoolContext (namespace ContosoUniversityMVC.Data).  
+● [Добавление миграции](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-3.1#add-a-migration)  Создание данных-заглушек в базу данных для соблюдения ограничений внешнего ключа. 
+Поскольку создан новый файл первичных данных DbInitializer, то для тестирования используем новую БД.

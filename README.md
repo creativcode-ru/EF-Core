@@ -50,6 +50,18 @@
 ### [Функции миграций](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-3.1)
 ● Создание первоначальной миграции. Чтобы избежать ошибок, воспользуйтесь командами PowerShell как в руководстве [Razor Pages EF](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#create-an-initial-migration). 
 Первая команда `Add-Migration InitialCreate` создаст файлы миграции, в вторая `Update-Database` создаст новую БД `SchoolContext2`  
-● Далее вернитесь к исходному руководству [Обзор методов Up и Down](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-3.1#examine-up-and-down-methods). Параметр имени миграции (в примере это "InitialCreate") используется в качестве имени файла и может быть любым.
+● Далее вернитесь к исходному руководству [Обзор методов Up и Down](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-3.1#examine-up-and-down-methods). Параметр имени миграции (в примере это "InitialCreate") используется в качестве имени файла и может быть любым.  
 ● Из Razor Pages EF: [Таблица журнала миграции в базе SQL](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#the-migrations-history-table), [Моментальный снимок модели данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/migrations?view=aspnetcore-3.1&tabs=visual-studio#the-data-model-snapshot)   
 ● Удаление миграции. Сначала надо откатить базу до предыдущей миграции, я сделал это в PowerShell командой [Update-Database -Migration 0](https://docs.microsoft.com/ru-ru/ef/core/miscellaneous/cli/powershell#update-database) -- таблицы, созданные предыдущей миграцией, удаены из БД. Для удаления файлов миграции из проекта я выполнил команду  [Remove-Migration](https://docs.microsoft.com/ru-ru/ef/core/miscellaneous/cli/powershell#remove-migration)
+
+### [Создание сложной модели данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-3.1)
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-3.1" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model/_static/diagram.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+● Настройка модели данных с помощью атрибутов.  
+Если вы не делали миграции для БД, то сначала разберитесь с миграциями. Придется вернутся к первоначальным данным, которые задаются в классе DbInitializer (namespace ContosoUniversityMVC.Data).  
+Итак: Обнулите все миграции `Update-Database -Migration 0`, откройте БД и удалите оставшиеся таблицы, сначала таблицу связей Enrollment потом Course и Student.  
+Если вы уже редактировали атрибуты, то закоментируйте все атрибуты и создайте первоначальную миграцию `Add-Migration InitialCreate`, примените миграцию к БД `Update-Database` - будут созданы пустые таблицы. Запиустите приложение, и таблицы заполнятся из класса DbInitializer.  
+Добавьте отрубуты к классу Student и создайте миграцию `Add-Migration InitialCreate` -- убедитесь, что миграция нацелена на обновление таблиц. Обновите базу `Update-Database` и проверьте изменения в схеме таблицы Student

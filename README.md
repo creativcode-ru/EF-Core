@@ -70,3 +70,12 @@
 Составной ключ - добавляется в классе SchoolContext (namespace ContosoUniversityMVC.Data).  
 ● [Добавление миграции](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/complex-data-model?view=aspnetcore-3.1#add-a-migration)  Создание данных-заглушек в базу данных для соблюдения ограничений внешнего ключа. 
 Поскольку создан новый файл первичных данных DbInitializer, то для тестирования используем новую БД.
+
+### [Чтение связанных данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/read-related-data?view=aspnetcore-3.1#prerequisites)
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/read-related-data?view=aspnetcore-3.1#prerequisites" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/read-related-data/_static/instructors-index.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+● Загрузка связанных данных. Безотложная загрузка, Явная загрузка, Отложенная загрузка.  
+На странице "Instructors" (Преподаватели) отображаются данные из трех различных таблиц, для этого создается отдельный класс модели отображения.

@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200208144115_InitialCreate.cs" />
     <Compile Remove="Migrations\20200208144115_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20200209105452_MaxLengthOnNames.cs" />
+    <Compile Remove="Migrations\20200209105452_MaxLengthOnNames.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,10 +20,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 

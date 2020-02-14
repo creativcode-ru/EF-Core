@@ -81,6 +81,12 @@
 На странице "Instructors" (Преподаватели) отображаются данные из трех различных таблиц, для этого создается отдельный класс модели отображения.
 
 ### [Обновление связанных данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/update-related-data?view=aspnetcore-3.1)
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/update-related-data?view=aspnetcore-3.1" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/update-related-data/_static/instructor-edit-courses.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+
 ● Добавление списка выбора на основе SelectList  
 ● Добавление .AsNoTrackin в методы Details и Delete   
 ● Настройка страниц Курсов. Добавление страницы редактирования данных о преподавателях. Добавление курсов на страницу редактирования

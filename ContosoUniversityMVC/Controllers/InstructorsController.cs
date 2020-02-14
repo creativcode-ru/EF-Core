@@ -156,14 +156,46 @@ namespace ContosoUniversityMVC.Controllers
                 return NotFound();
             }
 
-            var instructor = await _context.Instructors.FindAsync(id);
+            //var instructor = await _context.Instructors.FindAsync(id);
+            var instructor = await _context.Instructors
+                                    .Include(i => i.OfficeAssignment) //загружает свойство навигации OfficeAssignment
+                                    .Include(i => i.CourseAssignments).ThenInclude(i => i.Course) //добавляет безотложную загрузку для свойства навигации Courses
+                                    .AsNoTracking()
+                                    .FirstOrDefaultAsync(m => m.ID == id);
             if (instructor == null)
             {
                 return NotFound();
             }
+           
+            PopulateAssignedCourseData(instructor); //для предоставления сведений массиву флажков с помощью класса модели представления AssignedCourseData.
             return View(instructor);
         }
 
+        private void PopulateAssignedCourseData(Instructor instructor)
+        {
+            //считывает все сущности Course, чтобы загрузить список курсов, используя класс модели представления. 
+            var allCourses = _context.Courses;
+            var instructorCourses = new HashSet<int>(instructor.CourseAssignments.Select(c => c.CourseID));
+            var viewModel = new List<AssignedCourseData>();
+
+            foreach (var course in allCourses)
+            {
+                /* Для каждого курса код проверяет, существует ли этот курс в свойстве навигации Courses преподавателя. 
+                 * Чтобы создать эффективную подстановку при проверке того, назначен ли курс преподавателю, назначаемые курсы помещаются в коллекцию HashSet.
+                 * У курсов, назначенных преподавателю, для свойства Assigned задается значение true. 
+                 * Представление будет использовать это свойство, чтобы определить, какие флажки нужно отображать как выбранные.
+                 */
+                viewModel.Add(new AssignedCourseData
+                {
+                    CourseID = course.CourseID,
+                    Title = course.Title,
+                    Assigned = instructorCourses.Contains(course.CourseID)
+                });
+            }
+            ViewData["Courses"] = viewModel; // Наконец, список передается в представление в ViewData.
+        }
+
+        /* Шаблонный метод
         // POST: Instructors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -197,6 +229,55 @@ namespace ContosoUniversityMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(instructor);
+        }
+        */
+
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(int? id) //сигнатура метода изменена на EditPost, чтобы не совпадала с методом GET Edit
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var instructorToUpdate = await _context.Instructors
+                .Include(i => i.OfficeAssignment)
+                .FirstOrDefaultAsync(s => s.ID == id);
+            /* Получает текущую сущность Instructor из базы данных, используя безотложную загрузку для свойства навигации OfficeAssignment. 
+             * Это аналогично тому, что сделали в методе HttpGet Edit.
+             */
+
+            if (await TryUpdateModelAsync<Instructor>(
+                instructorToUpdate,
+                "",
+                i => i.FirstMidName, i => i.LastName, i => i.HireDate, i => i.OfficeAssignment))
+            {
+                /* Обновляет извлеченную сущность Instructor, используя значения из связывателя модели. 
+                 * Перегрузка TryUpdateModel позволяет добавить включаемые свойства в список разрешений. 
+                 * Это защищает от чрезмерной передачи данных, 
+                 */
+                if (String.IsNullOrWhiteSpace(instructorToUpdate.OfficeAssignment?.Location))
+                {
+                    instructorToUpdate.OfficeAssignment = null;
+                    /* Если расположение кабинета отсутствует, задает для свойства Instructor.OfficeAssignment значение null, 
+                     * что приведет к удалению связанной строки в таблице OfficeAssignment.
+                     */
+                }
+                try
+                {
+                    await _context.SaveChangesAsync(); //Сохраняет изменения в базу данных.
+                }
+                catch (DbUpdateException /* ex */)
+                {
+                    //Log the error (uncomment ex variable name and write a log.)
+                    ModelState.AddModelError("", "Unable to save changes. " +
+                        "Try again, and if the problem persists, " +
+                        "see your system administrator.");
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(instructorToUpdate);
         }
 
         // GET: Instructors/Delete/5
@@ -234,3 +315,4 @@ namespace ContosoUniversityMVC.Controllers
         }
     }
 }
+

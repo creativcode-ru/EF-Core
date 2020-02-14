@@ -34,9 +34,35 @@
                 <span asp-validation-for="OfficeAssignment.Location" class="text-danger" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="col-md-offset-2 col-md-10">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                List<ContosoUniversityMVC.Models.SchoolViewModels.AssignedCourseData> courses = ViewBag.Courses;
+
+                                foreach (var course in courses)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedCourses"
+                                               value="@course.CourseID"
+                                               @(Html.Raw(course.Assigned ? "checked=\"checked\"" : "")) /> @course.CourseID @:  @course.Title
+                                    @:&nbsp;</td>
+                                }
+                            @:</tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
     </div>
 </div>
 

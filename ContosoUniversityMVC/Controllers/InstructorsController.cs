@@ -126,6 +126,8 @@ namespace ContosoUniversityMVC.Controllers
             return View(instructor);
         }
 
+        /* Шаблонные методы
+         
         // GET: Instructors/Create
         public IActionResult Create()
         {
@@ -145,6 +147,48 @@ namespace ContosoUniversityMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(instructor);
+        }
+        */
+
+        //Этот код аналогичен коду для методов Edit, за исключением того, что изначально никакие курсы не выбраны. 
+        public IActionResult Create()
+        {
+            var instructor = new Instructor();
+            instructor.CourseAssignments = new List<CourseAssignment>();
+            PopulateAssignedCourseData(instructor);
+            return View();
+        }
+
+        // POST: Instructors/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("FirstMidName,HireDate,LastName,OfficeAssignment")] Instructor instructor, string[] selectedCourses)
+        {
+            /* Метод HttpPost Create добавляет каждый выбранный курс в свойство навигации CourseAssignments до того, 
+             * как выполнить поиск ошибок проверки и добавить нового преподавателя в базу данных. 
+             * Курсы добавляются даже при наличии ошибок модели, поэтому когда имеются такие ошибки 
+             * (например, пользователь ввел недопустимую дату) и страница отображается повторно с сообщением об ошибке, 
+             * все выбранные курсы восстанавливаются автоматически.
+             */
+            if (selectedCourses != null)
+            {
+                instructor.CourseAssignments = new List<CourseAssignment>();
+                //для добавления курсов в свойство навигации CourseAssignments нужно инициализировать как пустую коллекцию.
+                // это можно сделать и в модели https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/update-related-data?view=aspnetcore-3.1#add-office-location-and-courses-to-create-page 
+                foreach (var course in selectedCourses)
+                {
+                    var courseToAdd = new CourseAssignment { InstructorID = instructor.ID, CourseID = int.Parse(course) };
+                    instructor.CourseAssignments.Add(courseToAdd);
+                }
+            }
+            if (ModelState.IsValid)
+            {
+                _context.Add(instructor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            PopulateAssignedCourseData(instructor);
             return View(instructor);
         }
 
@@ -232,9 +276,12 @@ namespace ContosoUniversityMVC.Controllers
         }
         */
 
-        [HttpPost, ActionName("Edit")]
+        //[HttpPost, ActionName("Edit")]
+        //public async Task<IActionResult> EditPost(int? id) //сигнатура метода изменена на EditPost, чтобы не совпадала с методом GET Edit
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(int? id) //сигнатура метода изменена на EditPost, чтобы не совпадала с методом GET Edit
+        public async Task<IActionResult> Edit(int? id, string[] selectedCourses) 
         {
             if (id == null)
             {
@@ -243,6 +290,7 @@ namespace ContosoUniversityMVC.Controllers
 
             var instructorToUpdate = await _context.Instructors
                 .Include(i => i.OfficeAssignment)
+                .Include(i => i.CourseAssignments).ThenInclude(i => i.Course)
                 .FirstOrDefaultAsync(s => s.ID == id);
             /* Получает текущую сущность Instructor из базы данных, используя безотложную загрузку для свойства навигации OfficeAssignment. 
              * Это аналогично тому, что сделали в методе HttpGet Edit.
@@ -264,6 +312,8 @@ namespace ContosoUniversityMVC.Controllers
                      * что приведет к удалению связанной строки в таблице OfficeAssignment.
                      */
                 }
+                UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+
                 try
                 {
                     await _context.SaveChangesAsync(); //Сохраняет изменения в базу данных.
@@ -277,7 +327,62 @@ namespace ContosoUniversityMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            UpdateInstructorCourses(selectedCourses, instructorToUpdate);
+            PopulateAssignedCourseData(instructorToUpdate);
             return View(instructorToUpdate);
+        }
+
+        /*
+         * Так как представление не содержит коллекцию сущностей Course, 
+         * связыватель модели не может автоматически обновить свойство навигации CourseAssignments. 
+         * Вместо использования связывателя модели для обновления свойства навигации CourseAssignments вы делаете это в новом методе UpdateInstructorCourses.
+         * Поэтому нужно исключить свойство CourseAssignments из привязки модели.
+         * Это не требует внесения никаких изменений в код, вызывающем TryUpdateModel, так как вы используете перегрузку на базе списка разрешений, 
+         * а CourseAssignments отсутствует в списке включений.
+         */
+        private void UpdateInstructorCourses(string[] selectedCourses, Instructor instructorToUpdate)
+        {
+            if (selectedCourses == null)
+            {
+                instructorToUpdate.CourseAssignments = new List<CourseAssignment>();
+                return;
+                /* Если никакие флажки не выбраны, код в UpdateInstructorCourses инициализирует свойство навигации CourseAssignments 
+                 * с использованием пустой коллекции.
+                 */
+            }
+
+            var selectedCoursesHS = new HashSet<string>(selectedCourses);
+            var instructorCourses = new HashSet<int>
+                (instructorToUpdate.CourseAssignments.Select(c => c.Course.CourseID));
+            /* После этого код в цикле проходит по всем курсам в базе данных и сравнивает каждый из них с теми, 
+             * которые сейчас назначены преподавателю, в противоположность тем, которые были выбраны в представлении. 
+             * Чтобы упростить эффективную подстановку, последние две коллекции хранятся в объектах HashSet.
+             */
+            foreach (var course in _context.Courses)
+            {
+                if (selectedCoursesHS.Contains(course.CourseID.ToString()))
+                {
+                    /* Если флажок для курса был установлен, но курс отсутствует в свойстве навигации Instructor.CourseAssignments, 
+                     * этот курс добавляется в коллекцию в свойстве навигации.
+                     */
+                    if (!instructorCourses.Contains(course.CourseID))
+                    {
+                        instructorToUpdate.CourseAssignments.Add(new CourseAssignment { InstructorID = instructorToUpdate.ID, CourseID = course.CourseID });
+                    }
+                }
+                else
+                {
+                    /* Если флажок для курса не был установлен, но курс присутствует в свойстве навигации Instructor.CourseAssignments, 
+                     * этот курс удаляется из свойства навигации.
+                     */
+                    if (instructorCourses.Contains(course.CourseID))
+                    {
+                        CourseAssignment courseToRemove = instructorToUpdate.CourseAssignments.FirstOrDefault(i => i.CourseID == course.CourseID);
+                        _context.Remove(courseToRemove);
+                    }
+                }
+            }
         }
 
         // GET: Instructors/Delete/5
@@ -303,8 +408,26 @@ namespace ContosoUniversityMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var instructor = await _context.Instructors.FindAsync(id);
+            //var instructor = await _context.Instructors.FindAsync(id);
+
+            Instructor instructor = await _context.Instructors
+                .Include(i => i.CourseAssignments)
+                .SingleAsync(i => i.ID == id);
+            /* Выполняет безотложную загрузку для свойства навигации CourseAssignments. 
+             * Вам нужно включить его, иначе EF не будет знать о связанных сущностях CourseAssignment и не удалит их. 
+             * Чтобы избежать необходимости считывать их, можно настроить каскадное удаление в базе данных.
+             */
+
+            var departments = await _context.Departments
+                .Where(d => d.InstructorID == id)
+                .ToListAsync();
+            departments.ForEach(d => d.InstructorID = null);
+            /* Если преподаватель, которого требуется удалить, назначен в качестве администратора любой из кафедр, 
+             * удаляется назначение преподавателя из таких кафедр.
+             */
+
             _context.Instructors.Remove(instructor);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

@@ -23,6 +23,9 @@ namespace ContosoUniversityMVC.Models
 
         public int? InstructorID { get; set; } //свойство допускает значение NULL
 
+        [Timestamp] //Атрибут Timestamp указывает, что этот столбец будет включен в предложение Where команд Update и Delete
+        public byte[] RowVersion { get; set; } //столбец отслеживния для устранения кофликтов паралельного редактирования
+
         public Instructor Administrator { get; set; } //свойство навигации
         public ICollection<Course> Courses { get; set; } //Кафедра может иметь несколько курсов
     }

@@ -98,3 +98,15 @@
 Данный метод гарантирует, что никакие изменения не перезаписываются без оповещения пользователя о случившемся - он и используется в примере.  
 ● Обнаружение конфликтов параллелизма - обработки исключений `DbConcurrencyException` - требует настройки БД и модели. В БД включаетя столбец отслеживания `rowversion`, он изменяется при каждом обновлении, и включается в запрос UPDATE или DELETE как часть предложения WHERE.  
 ● Создание представлений и контроллера кафедр. Обновление страницы удаления. Обновление представлений Details и Create.
+
+### [Реализация наследования](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/inheritance?view=aspnetcore-3.1)
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/inheritance?view=aspnetcore-3.1" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/inheritance/_static/inheritance.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+
+Изменения вносятся в коде, а не на веб-страницах, и автоматически отражаются в базе данных. Платформа Entity Framework поддерживает только модель наследования "одна таблица на иерархию". Необходимо создать класс Person, изменить классы Instructor и Student так, чтобы они были производными от класса Person, добавить новый класс в DbContext, после чего создать миграцию.
+
+⚠ ВНИМАНИЕ! [Опечатка в документации](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/inheritance?view=aspnetcore-3.1#add-person-to-the-model):  
+из класса SchoolContext в методе `OnModelCreating(ModelBuilder modelBuilder)` закомментируйте 2 строки с классами Student и Instructor, надо оставить только одну таблицу Person вместо двух прежних. При миграции будет предупреждение о потере данных. 

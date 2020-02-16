@@ -110,3 +110,12 @@
 
 ⚠ ВНИМАНИЕ! [Опечатка в документации](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/inheritance?view=aspnetcore-3.1#add-person-to-the-model):  
 из класса SchoolContext в методе `OnModelCreating(ModelBuilder modelBuilder)` закомментируйте 2 строки с классами Student и Instructor, надо оставить только одну таблицу Person вместо двух прежних. При миграции будет предупреждение о потере данных. 
+
+<br /><br />
+<p align="center">
+  Дополнительные консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />
+   <a  href="http://creativcode.ru/learn/webnet" target="_blank" >
+  <img src="http://creativcode.ru/img/learn/net-backend.jpg" width="400" alt="">
+   </a>
+</p>
+

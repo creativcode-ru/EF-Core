@@ -5,8 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema; //для переимено�
 
 namespace ContosoUniversityMVC.Models
 {
-    public class Student
+    public class Student : Person
     {
+        /*
         public int ID { get; set; } //По умолчанию платформа EF Core интерпретирует в качестве первичного ключа свойство ID или classnameID.
         [Required]
         [StringLength(50)] //минимальное значение не влияет на схему данных, но обеспечивает проверку на клиенте и сервере. Для максимального значения изменится схема данных при миграции
@@ -20,11 +21,6 @@ namespace ContosoUniversityMVC.Models
         [Column("FirstName")] //БД будет содержать именно это имя: данные будут браться из столбца FirstName таблицы Student или обновляться в нем
         public string FirstMidName { get; set; }
 
-        [DataType(DataType.Date)] //Поддержка функций HTML5 в браузере
-        [Display(Name = "Дата поступления")]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime EnrollmentDate { get; set; }
-
         [Display(Name = "Полное имя")]
         public string FullName
         {
@@ -33,6 +29,12 @@ namespace ContosoUniversityMVC.Models
                 return LastName + ", " + FirstMidName;
             }
         }
+        */
+
+        [DataType(DataType.Date)] //Поддержка функций HTML5 в браузере
+        [Display(Name = "Дата поступления")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime EnrollmentDate { get; set; }
 
         public ICollection<Enrollment> Enrollments { get; set; } //Это связь
         //Можно использовать и другие типы коллекций, например List<Enrollment> или HashSet<Enrollment>. 

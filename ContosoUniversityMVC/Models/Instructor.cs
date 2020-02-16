@@ -8,8 +8,9 @@ using System.ComponentModel.DataAnnotations.Schema; //для переимено�
 
 namespace ContosoUniversityMVC.Models
 {
-    public class Instructor
+    public class Instructor : Person
     {
+        /*
         public int ID { get; set; }
 
         [Required]
@@ -23,14 +24,15 @@ namespace ContosoUniversityMVC.Models
         [StringLength(50)]
         public string FirstMidName { get; set; }
 
-        [DataType(DataType.Date), Display(Name = "Принят на работу"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime HireDate { get; set; }
-
         [Display(Name = "Полное имя")]
         public string FullName
         {
             get { return LastName + ", " + FirstMidName; }
         }
+        */
+
+        [DataType(DataType.Date), Display(Name = "Принят на работу"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime HireDate { get; set; }
 
         public ICollection<CourseAssignment> CourseAssignments { get; set; } //Преподаватель может проводить любое количество курсов, поэтому CourseAssignments определен как коллекция.
         public OfficeAssignment OfficeAssignment { get; set; }

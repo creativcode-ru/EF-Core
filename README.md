@@ -135,7 +135,7 @@
 📗 книга онлайн [Entity Framework Core in Action.]()
 <br /><br />
 <p align="center">
-  Дополнительные консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />
+  Практические консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />
    <a  href="http://creativcode.ru/learn/webnet" target="_blank" >
   <img src="http://creativcode.ru/img/learn/net-backend.jpg" width="400" alt="">
    </a>

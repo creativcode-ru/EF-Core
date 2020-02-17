@@ -132,7 +132,7 @@
 
 ### Дополнительные ресурсы
 📘 [документации по платформе Entity Framework Core.](https://docs.microsoft.com/ru-ru/ef/core/)  
-📗 книга онлайн [Entity Framework Core in Action.]()
+📗 книга онлайн [Entity Framework Core in Action.](https://livebook.manning.com/book/entity-framework-core-in-action/part-1/)
 <br /><br />
 <p align="center">
   Практические консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />

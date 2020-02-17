@@ -62,6 +62,7 @@ namespace ContosoUniversityMVC.Controllers
                                        || s.FirstMidName.Contains(searchString));
             }
 
+            /*
             switch (sortOrder) //дополняем запрос порядком сортировки
             {
                 case "name_desc":
@@ -77,6 +78,33 @@ namespace ContosoUniversityMVC.Controllers
                     students = students.OrderBy(s => s.LastName);
                     break;
             }
+            */
+
+            //--------  Использование динамических запросов LINQ для упрощения кода (вместо case) ------------------------------------------
+            // https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/advanced?view=aspnetcore-3.1#use-dynamic-linq-to-simplify-code
+
+            if (string.IsNullOrEmpty(sortOrder))
+            {
+                sortOrder = "LastName";
+            }
+
+            bool descending = false;
+            if (sortOrder.EndsWith("_desc"))
+            {
+                sortOrder = sortOrder.Substring(0, sortOrder.Length - 5);
+                descending = true;
+            }
+
+            //метод EF.Property используется для указания имени свойства в виде строки
+            if (descending)
+            {
+                students = students.OrderByDescending(e => EF.Property<object>(e, sortOrder));
+            }
+            else
+            {
+                students = students.OrderBy(e => EF.Property<object>(e, sortOrder));
+            }
+            //-------
 
             int pageSize = 3;
             return View(await PaginatedList<Student>.CreateAsync(students.AsNoTracking(), pageNumber ?? 1, pageSize));

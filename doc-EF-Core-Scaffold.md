@@ -5,7 +5,6 @@
 * [Создание модели для существующей базы данных в Entity Framework Core](https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx)
 * [База данных First in Entity Framework Core с библиотекой классов и SQL Server](https://riptutorial.com/ru/entity-framework-core/example/22690/%D0%B1%D0%B0%D0%B7%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-first-in-entity-framework-core-%D1%81-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%BE%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%BE%D0%B2-%D0%B8-sql-server)
 * [E.F CORE – EXISTING DATABASE](https://fmoralesdev.com/2019/08/05/e-f-core-existing-database/)
-* [Entity Framework Core Database-First Tutorial for .NET Core](https://www.devart.com/dotconnect/postgresql/docs/EFCore-Database-First-NET-Core.html)
 * [Инструменты и расширения EF Core](https://docs.microsoft.com/ru-ru/ef/core/extensions/)
 * [Настройка и работа базы данных Entity Framework First](https://www.c-sharpcorner.com/article/entity-framework-database-first-in-asp-net-core2/)
 * [Базовое приложение ASP.NET для существующей базы данных (сначала база данных)](https://ef.readthedocs.io/en/staging/platforms/aspnetcore/existing-db.html)

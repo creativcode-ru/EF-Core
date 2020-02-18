@@ -1,4 +1,4 @@
-[← EF Core](/tree/master)  
+[← EF Core](/EF-Core/tree/master)  
 
 # EF Core с MVC
 [Учебник по работе с ASP.NET Core 2.0 MVC и EF Core](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/?view=aspnetcore-3.1)

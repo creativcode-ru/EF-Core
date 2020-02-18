@@ -65,6 +65,7 @@
   <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/read-related-data/_static/instructors-index.png?view=aspnetcore-3.1" width="400" alt="">
    </a>
 </p>
+
 * Загрузка связанных данных. Безотложная загрузка, Явная загрузка, Отложенная загрузка.  
 На странице "Instructors" (Преподаватели) отображаются данные из трех различных таблиц, для этого создается отдельный класс модели отображения.
 

@@ -1,5 +1,5 @@
 # EF-Core
-[<img align="right" width="96px" src="http://creativcode.ru/img/app/logo-page.png" />](http://creativcode.ru/)
+[<img align="right" width="96px" title="Веб студия CREATIVcode в Сочи" src="http://creativcode.ru/img/app/logo-page.png" />](http://creativcode.ru/)
 Доступ к базе данных SQL для приложений .Net Core на основе EF Core  
 Рещение содержит ряд учебных проектов с кодом. Проекты созданы на основе документации, на которую приводятся сслки. Вы можете самостоятельно следовать документации, сверяясь, при необходимости с кодом нашего проекта.
 
@@ -32,7 +32,7 @@
 <br /><br />
 <p align="center">
   Практические консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />
-   <a  href="http://creativcode.ru/learn/webnet" target="_blank" >
+   <a  href="http://creativcode.ru/learn/webnet" target="_blank" title="Курс веб программирования .Net C#" >
   <img src="http://creativcode.ru/img/learn/net-learn.jpg" width="400" alt="">
    </a>
 </p>

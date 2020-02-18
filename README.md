@@ -1,5 +1,5 @@
 # EF-Core
-[<img align="right" width="100px" src="http://creativcode.ru/img/app/logo-page.png" />](http://creativcode.ru/)
+[<img align="right" width="96px" src="http://creativcode.ru/img/app/logo-page.png" />](http://creativcode.ru/)
 Доступ к базе данных SQL для приложений .Net Core на основе EF Core  
 Рещение содержит ряд учебных проектов с кодом. Проекты созданы на основе документации, на которую приводятся сслки. Вы можете самостоятельно следовать документации, сверяясь, при необходимости с кодом нашего проекта.
 

@@ -12,8 +12,11 @@
 
 База данных создается в стандартном каталоге `C:/Users/{user}` . Для доступа к БД (просмотр, удаление) можно использовать SQL Server Management Studio (SSMS) - при подключении выбрать (localdb)\MSSQLLocalDB
 
-## [EF Core с MVC](https://github.com/creativcode-ru)
-[Учебник по работе с ASP.NET Core 2.0 MVC и EF Core](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/?view=aspnetcore-3.1)
+## [EF Core с MVC](doc-EF-Core-MVC.md)
+Учебный проект поработе с ASP.NET Core MVC и EF Core 3.1  
+* Реализация наследования в модели данных  
+* Выполнение прямых SQL-запросов  
+* Использование динамических запросов LINQ для упрощения кода  
 
 
 

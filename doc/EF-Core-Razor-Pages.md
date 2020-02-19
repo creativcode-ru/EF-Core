@@ -15,4 +15,4 @@
 * [EF Core CRUD](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1)  
 CREATE: обработка уязвимости [Чрезмерная передача данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#overposting), с помощью метода `TryUpdateModel` или модели представления (ViewModel) и метода ` entry.CurrentValues.SetValues(StudentVM);`  
 EDIT: Если включать связанные данные не требуется, более эффективным будет метод `FindAsync`. [Состояния сущностей](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#entity-states).  
-DELETE: Обработка сбоя - операция удаления может завершиться сбоем из-за временных проблем с сетью.
+DELETE: [Обработка сбоя](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#update-the-delete-page) - операция удаления может завершиться сбоем из-за временных проблем с сетью.

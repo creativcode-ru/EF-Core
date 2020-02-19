@@ -11,7 +11,7 @@
 
 Учебный проект `EFGetStarted`
 
-## EF Core с Razor Pages
+## [EF Core с Razor Pages →](doc/EF-Core-Razor-Pages.md)
 [Учебник Razor Pages с Entity Framework Core в ASP.NET Core](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)
 
 База данных создается в стандартном каталоге `C:/Users/{user}` . Для доступа к БД (просмотр, удаление) можно использовать SQL Server Management Studio (SSMS) - при подключении выбрать (localdb)\MSSQLLocalDB

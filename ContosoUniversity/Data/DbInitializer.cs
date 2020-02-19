@@ -9,7 +9,7 @@ namespace ContosoUniversity.Data
     {
         public static void Initialize(SchoolContext context)
         {
-            context.Database.EnsureCreated();
+            context.Database.EnsureCreated();  //Метод EnsureCreated не выполняет никаких действий, если база данных для контекста существует. Если база данных не существует, она создается вместе со схемой. 
 
             // Look for any students.
             if (context.Students.Any())
@@ -51,6 +51,7 @@ namespace ContosoUniversity.Data
             }
             context.SaveChanges();
 
+            //связи строятся после заполнения таблиц, которые они связывают
             var enrollments = new Enrollment[]
             {
                 new Enrollment{StudentID=1,CourseID=1050,Grade=Grade.A},

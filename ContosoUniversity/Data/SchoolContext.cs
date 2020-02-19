@@ -8,7 +8,7 @@ using ContosoUniversity.Models;
 /*
  * Контекст базы данных — это основной класс, который координирует функциональные возможности EF Core для определенной модели данных. 
  * Контекст наследуется от Microsoft.EntityFrameworkCore.DbContext. 
- * Контекст указывает сущности, которые включаются в модель данных. 
+ * === Контекст указывает сущности, которые включаются в модель данных. ===
  */
 
 namespace ContosoUniversity.Data
@@ -20,7 +20,7 @@ namespace ContosoUniversity.Data
         {
         }
 
-        //Код ниже создает свойство DbSet<TEntity> для каждого набора сущностей. В терминологии EF Core:
+        //Код ниже создает свойство DbSet<TEntity> для каждого набора сущностей, которые включаются в модель данных:
         public DbSet<Student> Students { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Course> Courses { get; set; }

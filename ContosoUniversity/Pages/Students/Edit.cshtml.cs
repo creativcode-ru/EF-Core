@@ -23,6 +23,7 @@ namespace ContosoUniversity
         [BindProperty]
         public Student Student { get; set; }
 
+        /* ШАБЛОН
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -67,6 +68,45 @@ namespace ContosoUniversity
             }
 
             return RedirectToPage("./Index");
+        }
+        */
+
+        public async Task<IActionResult> OnGetAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Student = await _context.Students.FindAsync(id); //Если включать связанные данные не требуется, более эффективным будет метод FindAsync.
+
+            if (Student == null)
+            {
+                return NotFound();
+            }
+            return Page();
+        }
+
+        //OnPostAsync имеет параметр id.
+        public async Task<IActionResult> OnPostAsync(int id)
+        {
+            var studentToUpdate = await _context.Students.FindAsync(id); //Текущий учащийся извлекается из базы данных ***
+
+            if (studentToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            if (await TryUpdateModelAsync<Student>(
+                studentToUpdate,
+                "student",
+                s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
+            }
+
+            return Page();
         }
 
         private bool StudentExists(int id)

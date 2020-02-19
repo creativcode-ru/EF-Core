@@ -18,7 +18,7 @@ namespace ContosoUniversity
            
             var host = CreateHostBuilder(args).Build();
 
-            CreateDbIfNotExists(host);
+            CreateDbIfNotExists(host); //создание базы, если её нет
 
             host.Run();
         }
@@ -45,12 +45,11 @@ namespace ContosoUniversity
                     Однако если данные, введенные в базу данных, необходимо сохранять, ситуация будет иной. В таком случае используйте перенос.
                     https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio
 
-                    Далее в этой серии учебников вы удалите базу данных, созданную методом EnsureCreated, и используете вместо этого перенос. 
-                    Созданную методом EnsureCreated базу данных нельзя обновить, используя перенос.
+                    Созданную методом EnsureCreated базу данных нельзя обновить, используя миграции.
 
                      */
 
-                    DbInitializer.Initialize(context); //заменяет метод context.Database.EnsureCreated()
+                    DbInitializer.Initialize(context); //содержит метод context.Database.EnsureCreated()
                 }
                 catch (Exception ex)
                 {

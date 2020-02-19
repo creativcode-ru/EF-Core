@@ -18,7 +18,7 @@
 
 Учебный проект `ContosoUniversity`
 
-## [EF Core с MVC →](doc-EF-Core-MVC.md)
+## [EF Core с MVC →](doc/EF-Core-MVC.md)
 Учебный проект `ContosoUniversityMVC` по работе с ASP.NET Core MVC и EF Core 3.1  
 * Реализация наследования в модели данных  
 * Выполнение прямых SQL-запросов  

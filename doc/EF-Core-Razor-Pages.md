@@ -1,3 +1,5 @@
+[← EF Core](/README.md)  
+
 # Razor Pages с EF Core
 
 ## [Создание проекта веб-приложения](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/intro?view=aspnetcore-3.1&tabs=visual-studio)

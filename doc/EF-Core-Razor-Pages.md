@@ -16,3 +16,8 @@
 CREATE: обработка уязвимости [Чрезмерная передача данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#overposting), с помощью метода `TryUpdateModel` или модели представления (ViewModel) и метода ` entry.CurrentValues.SetValues(StudentVM);`  
 EDIT: Если включать связанные данные не требуется, более эффективным будет метод `FindAsync`. [Состояния сущностей](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#entity-states).  
 DELETE: [Обработка сбоя](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/crud?view=aspnetcore-3.1#update-the-delete-page) - операция удаления может завершиться сбоем из-за временных проблем с сетью.
+
+* [Сортировка, фильтрация, разбиение на страницы](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1)  
+Передача параметра сортировки в URL. [Добавление фильтрации](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1#add-filtering) - производительность IQueryable и IEnumerable.  
+[Разбиения по страницам](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1#add-paging). Создание класса PaginatedList.  
+[Добавление группирования](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/sort-filter-page?view=aspnetcore-3.1#add-grouping)  

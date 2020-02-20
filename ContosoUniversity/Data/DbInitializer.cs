@@ -9,7 +9,7 @@ namespace ContosoUniversity.Data
     {
         public static void Initialize(SchoolContext context)
         {
-            context.Database.EnsureCreated();  //Метод EnsureCreated не выполняет никаких действий, если база данных для контекста существует. Если база данных не существует, она создается вместе со схемой. 
+            //context.Database.EnsureCreated();  //Метод EnsureCreated не выполняет никаких действий, если база данных для контекста существует. Если база данных не существует, она создается вместе со схемой. 
 
             // Look for any students.
             if (context.Students.Any())

@@ -27,7 +27,9 @@
 • [Razor Pages против приложений MVC | Форумы ASP.NET](https://forums.asp.net/t/2163056.aspx?Razor+Pages+Vs+MVC+apps)
 
 <p align="center">
-  <img src="Images/razor-pages-me.jpg" width="400" alt="">
+   <a  href="https://vk.com/creativcode_ru" target="_blank" title="Задавайте вопросы ВКонтакте!" >
+     <img src="Images/razor-pages-me.jpg" width="400" alt="">
+   </a>
 </p>
 
 Стоит присмотрется!

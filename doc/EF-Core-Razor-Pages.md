@@ -83,6 +83,6 @@ The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_Course_
 
 ⚗ продолжение следует
 
-[Создание страниц преподавателей](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/read-related-data?view=aspnetcore-3.1&tabs=visual-studio#create-instructor-pages)
+[Формирование шаблона для страниц преподавателей](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/read-related-data?view=aspnetcore-3.1&tabs=visual-studio#scaffold-instructor-pages)
 
 

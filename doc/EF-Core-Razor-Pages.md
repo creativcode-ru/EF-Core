@@ -40,3 +40,17 @@ DELETE: [Обработка сбоя](https://docs.microsoft.com/ru-ru/aspnet/co
 
 Дополнительныe сведения:  
 📘 [Управление схемами баз данных: Миграции](https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/migrations/?tabs=dotnet-core-cli)
+
+## [Создание сложной модели данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/complex-data-model?view=aspnetcore-3.1&tabs=visual-studio)
+
+<p align="center">
+   <a  href="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/complex-data-model?view=aspnetcore-3.1&tabs=visual-studio" target="_blank" >
+  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/complex-data-model/_static/diagram.png?view=aspnetcore-3.1" width="400" alt="">
+   </a>
+</p>
+
+Использование атрибутов данных, требуются классы `using System.ComponentModel.DataAnnotations` и
+`using System.ComponentModel.DataAnnotations.Schema`.  
+Атрибут `Column` - сопоставляются с базой данных, а атриут `Display` с отображением на странице. Запуск миграции после присвоения атрибутов.  
+[Атрибут DatabaseGenerated](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/complex-data-model?view=aspnetcore-3.1&tabs=visual-studio#the-databasegenerated-attribute) - указывает, что первичный ключ предоставляется приложением, а не создается базой данных.  
+🟡 По соглашению EF Core разрешает **каскадное удаление** для внешних ключей, не допускающих значение null, и связей "многие ко многим". Это [поведение по умолчанию](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/complex-data-model?view=aspnetcore-3.1&tabs=visual-studio#foreign-key-and-navigation-properties) может привести к циклическим правилам каскадного удаления. Такие правила вызывают исключение при добавлении миграции.

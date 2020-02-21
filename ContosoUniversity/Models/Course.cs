@@ -1,19 +1,26 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContosoUniversity.Models
 {
     public class Course
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)] 
-        //Атрибут DatabaseGenerated=none позволяет приложению указать первичный ключ, а не использовать созданный базой данных.
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        // Атрибут [DatabaseGenerated(DatabaseGeneratedOption.None)] указывает, что первичный ключ предоставляется приложением, а не создается базой данных.
+        [Display(Name = "Номер")]
         public int CourseID { get; set; }
+
+        [StringLength(50, MinimumLength = 3)]
         public string Title { get; set; }
+
+        [Range(0, 5)]
         public int Credits { get; set; }
 
+        public int DepartmentID { get; set; }
+
+        public Department Department { get; set; }
         public ICollection<Enrollment> Enrollments { get; set; }
-        /* Свойство Enrollments является свойством навигации. 
-         * Сущность Course может быть связана с любым числом сущностей Enrollment.
-         */
+        public ICollection<CourseAssignment> CourseAssignments { get; set; }
     }
 }

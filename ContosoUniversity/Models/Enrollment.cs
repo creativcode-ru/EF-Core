@@ -1,4 +1,7 @@
-﻿namespace ContosoUniversity.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ContosoUniversity.Models
 {
     public enum Grade
     {
@@ -23,6 +26,7 @@
         * <primary key property name>. 
         * Например, CourseID, так как сущность Course имеет первичный ключ CourseID.
         */
+        [DisplayFormat(NullDisplayText = "Оценка")]
         public Grade? Grade { get; set; }
 
         public Course Course { get; set; }

@@ -69,7 +69,7 @@ The ALTER TABLE statement conflicted with the FOREIGN KEY constraint "FK_Course_
 Теперь мы вновь делаем `Update-Database`, запускается миграция, которая уже добавляет временные данные. Осталось заполнить данными вновь созданные сущности. Для данного примера пишется новая версия метода заполнителя, а база удаляется. Тогда при запуске приложения база будет вновь создана и заполнена новыми данными.
 
 
-## Чтение и обновление связанных данных
+## [Чтение и обновление связанных данных](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/read-related-data?view=aspnetcore-3.1&tabs=visual-studio)
 [Безотложная загрузка](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/read-related-data?view=aspnetcore-3.1&tabs=visual-studio#eager-explicit-and-lazy-loading). Безотложной является загрузка, когда запрос для одного типа сущности также загружает связанные сущности с помощью методов Include и ThenInclude.
  <img src="https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-rp/read-related-data/_static/eager-loading.png?view=aspnetcore-3.1" width="600" alt="">
  

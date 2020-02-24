@@ -12,7 +12,7 @@
 Добавить те же пакеты, что и в приложении `EF Core с Razor Pages`
 
 <p align="center"> 
-  <img src="ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">  
+  <img src="/ContosoUniversityMVC/wwwroot/img/prtsc/addNuget.png" width="400" alt="Установка пакетов Nuget для EF Core 3.1 с MVC">  
 </p>
 
 ### [Реализация функциональности CRUD](https://docs.microsoft.com/ru-ru/aspnet/core/data/ef-mvc/sort-filter-page?view=aspnetcore-3.1)

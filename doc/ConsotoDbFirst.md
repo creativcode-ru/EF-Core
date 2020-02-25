@@ -49,7 +49,7 @@ Microsoft.EntityFrameworkCore.Tools
      <img src="/Images/db-connection.jpg" width="552" alt="">  
 </p>
 
-Это стандартное окно подключения к БД, выбираем нашу БД, и `OK`. Возвращаемся первоначальному окошку, и не ставим галочку `Use Ef Core 3.x`:
+Это стандартное окно подключения к БД, выбираем нашу БД, и `OK`. Возвращаемся первоначальному окошку, и ставим галочку `Use Ef Core 3.x`:
 <p align="center">
      <img src="/Images/add-model.jpg" width="404" alt="">  
 </p>

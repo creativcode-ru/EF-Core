@@ -24,4 +24,8 @@
 ```
 и выполним в консоле диспечера пакетов (PMC) команду `Update-Database`. В созданнной БД удалим таблицу отслеживания миграций `__EFMigrationsHistory`. 
 
+<p align="center">
+     <img src="/Images/db-first.jpg" width="294" alt="">
+</p>
+
 ⚗ ещё готовится:)

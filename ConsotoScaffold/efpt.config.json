@@ -1,0 +1,54 @@
+﻿{
+   "ContextClassName": "Schoolcontext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "DoNotCombineNamespace": false,
+   "IdReplace": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data",
+   "OutputPath": "Models",
+   "ProjectRootNamespace": "ConsotoScaffold",
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[__EFMigrationsHistoryTMP]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Course]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[CourseAssignment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Department]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Enrollment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Instructor]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[OfficeAssignment]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[Student]"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseSpatial": false
+}

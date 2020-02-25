@@ -1,5 +1,5 @@
 ﻿{
-   "ContextClassName": "Schoolcontext",
+   "ContextClassName": "ConsotodbfirstContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "DoNotCombineNamespace": false,
@@ -8,14 +8,10 @@
    "ModelNamespace": null,
    "OutputContextPath": "Data",
    "OutputPath": "Models",
-   "ProjectRootNamespace": "ConsotoScaffold",
+   "ProjectRootNamespace": "ConsotoDbFirst",
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
    "Tables": [
-      {
-         "HasPrimaryKey": true,
-         "Name": "[dbo].[__EFMigrationsHistoryTMP]"
-      },
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Course]"

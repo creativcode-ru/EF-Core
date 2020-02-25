@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ConsotoScaffold.Models
+namespace ConsotoDbFirst.Models
 {
     public partial class Department
     {

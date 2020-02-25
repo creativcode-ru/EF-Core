@@ -18,7 +18,7 @@
 
 Учебный проект `ContosoUniversity`
 
-## [EF Core Database First Razor Pages →](doc/ConsotoScaffold.md)
+## [EF Core Database First Razor Pages →](doc/ConsotoDbFirst.md)
 ⚗ готовится:)
 
 ## Razor Pages или MVC?

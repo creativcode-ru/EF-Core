@@ -28,4 +28,13 @@
      <img src="/Images/db-first.jpg" width="294" alt="">
 </p>
 
+* Создайте проект Razor Pages с названием `ConsotoDbFirst`  
+Добавьте в проект необходимые пакеты NuGet:
+```
+Microsoft.EntityFrameworkCore.SqlServer
+Microsoft.EntityFrameworkCore.Design
+Microsoft.EntityFrameworkCore.Tools
+```
+
+## Реконструирование 
 ⚗ ещё готовится:)

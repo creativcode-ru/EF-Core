@@ -7,5 +7,8 @@
 В моём случае, это не сработало - возникала ошибка при подключении к БД. Предлагаемый ниже способ дал требуемый результат.
 
 ## Подготовка
+* Установите расширение <a href="https://marketplace.visualstudio.com/items?itemName=ErikEJ.EFCorePowerTools">EF Core Power Tools <img src="https://erikej.gallerycdn.vsassets.io/extensions/erikej/efcorepowertools/2.4.0/1581168364918/Microsoft.VisualStudio.Services.Icons.Default" width="32" alt=""></a>  
+* Установите компонент **редактор DGML**. Для этого запустите стандартный установщик Visual Stiudio, перейдите на вкладку **Отдельные компоненты**, и в строке поиска наберите `dgml`
+
 
 ⚗ ещё готовится:)

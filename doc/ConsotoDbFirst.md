@@ -15,4 +15,13 @@
 </p>
 
 ## Создание проекта
+* Создание копии БД.  
+Для этого будем использовать [ранее созданныей проект ConsotoUniversity](EF-Core-Razor-Pages.md). В нем, в файле _appsettings.json_ в строке подключение изменим имя базы с на ConsotoDbFirst:
+```
+  "ConnectionStrings": {
+    "SchoolContext": "Server=(localdb)\\mssqllocaldb;Database=ConsotoDbFirst;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+```
+и выполним в консоле диспечера пакетов (PMC) команду `Update-Database`. В созданнной БД удалим таблицу отслеживания миграций `__EFMigrationsHistory`. 
+
 ⚗ ещё готовится:)

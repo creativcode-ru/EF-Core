@@ -37,4 +37,39 @@ Microsoft.EntityFrameworkCore.Tools
 ```
 
 ## Реконструирование 
+Ранее мы установили расширение EF Core Power Tools, теперь пора им воспользоваться. Шёлкаем правой кнопкой мыши на проекте, и в открывшемся списке выбираем: `EF Core Power Tools` затем `Reverse Engineer`:
+
+<p align="center">
+     <img src="/Images/ef-core-power-tools.jpg" width="700" alt="">  
+</p>
+
+В маленьком окошке нам предлагается добавить соединение с БД, нажимаем кнопку `Add...`
+
+<p align="center">
+     <img src="/Images/db-connection.jpg" width="552" alt="">  
+</p>
+
+Это стандартное окно подключения к БД, выбираем нашу БД, и `OK`. Возвращаемся первоначальному окошку, и не ставим галочку `Use Ef Core 3.x`:
+<p align="center">
+     <img src="/Images/add-model.jpg" width="404" alt="">  
+</p>
+
+Далее появится окошко, где можно выбрать все таблицы (или некоторые), снова `OK` и открывается окно параметров создания модели из БД:
+
+<p align="center">
+     <img src="/Images/generate-model.jpg" width="407" alt="">  
+</p>
+
+Здесь задаем необходимые каталога Model и Data, ставим галочку для анотации данных. После нажатия `OK` происходит реконструирование данных.
+
+## Отображение модели 
+
 ⚗ ещё готовится:)
+
+<br /><br />
+<p align="center">
+  Практические консультации вы можете получить на наших <a  href="http://creativcode.ru/learn" target="_blank" >веб курсах в Сочи, Адлер</a>:<br /><br />
+   <a  href="http://creativcode.ru/learn/webnet" target="_blank" >
+  <img src="http://creativcode.ru/img/learn/net-backend.jpg" width="400" alt="">
+   </a>
+</p>

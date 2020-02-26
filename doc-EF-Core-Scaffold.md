@@ -1,5 +1,7 @@
 [← EF Core](README.md)  
 
+👍 Можно использовать расширение EF Core Power Tools, подробнее читайте в статье [Database First EF Core Razor Pages](/doc/ConsotoDbFirst.md)
+
 ### 🔖 Закладки
 * [Working with an Existing Database [2 of 5]](https://channel9.msdn.com/Series/Entity-Framework-Core-101/Working-with-an-Existing-Database)
 * [Создание модели для существующей базы данных в Entity Framework Core](https://www.entityframeworktutorial.net/efcore/create-model-for-existing-database-in-ef-core.aspx)

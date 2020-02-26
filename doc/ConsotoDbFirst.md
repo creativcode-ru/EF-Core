@@ -83,7 +83,7 @@ using ConsotoDbFirst.Data;
                    options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
         }
 ```
-Теперь мы можем отобразить схему модели, для этого щёлкните правой кнопкой мыши на проект, в выпадающем списке выберите **EF Core Power Tools** затем **Add **
+Теперь мы можем отобразить схему модели, для этого щёлкните правой кнопкой мыши на проект, в выпадающем списке выберите **EF Core Power Tools** затем **Add DbContext Model Diagramm**
 
 <p align="center">
      <img src="/Images/db-dgml.jpg" width="1210" alt="">  

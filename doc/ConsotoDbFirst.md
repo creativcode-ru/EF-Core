@@ -63,6 +63,35 @@ Microsoft.EntityFrameworkCore.Tools
 Здесь задаем необходимые каталога Model и Data, ставим галочку для анотации данных. После нажатия `OK` происходит реконструирование данных.
 
 ## Отображение модели 
+Для отображения модели нам надо прописать строки подключения для проекта, сначала добавим строку подключения в _appsettings.json_ 
+```
+  "ConnectionStrings": {
+    "SchoolContext": "Server=(localdb)\\mssqllocaldb;Database=ConsotoDbFirst;Trusted_Connection=True;MultipleActiveResultSets=true"
+  }
+```
+затем в файле _Startup.cs_ добавим в метод ConfigureServices строку подключения и необходимые пространства имен:
+```
+using Microsoft.EntityFrameworkCore;
+using ConsotoDbFirst.Data;
+------------------------
+
+ public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddRazorPages();
+            //строка подключения:
+            services.AddDbContext<ConsotodbfirstContext>(options =>
+                   options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
+        }
+```
+Теперь мы можем отобразить схему модели, для этого щёлкните правой кнопкой мыши на проект, в выпадающем списке выберите **EF Core Power Tools** затем **Add **
+
+<p align="center">
+     <img src="/Images/db-dgml.jpg" width="1210" alt="">  
+</p>
+
+В проекте появится xml файл который хранит схему отображения данных _ConsotodbfirstContext.dgml_
+
+## Обновление БД
 
 ⚗ ещё готовится:)
 

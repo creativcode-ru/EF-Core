@@ -19,7 +19,7 @@
 Учебный проект `ContosoUniversity`
 
 ## [EF Core Database First Razor Pages →](doc/ConsotoDbFirst.md)
-⚗ готовится:)
+Использование расширение Visual Studio для реконструирования классов модели из существующнй БД.
 
 ## Razor Pages или MVC?
 Снова изменения, теперь Microsoft предлагает ✨**Razor Pages**✨ в качестве ведущей платформы веб разработки для ASP.NET Core. Что это.., возврат к WebForms? - но здесь нет тега Form для всей страницы, нет и фарша из ViewState, нет и событий.  
@@ -43,9 +43,8 @@
 * Выполнение прямых SQL-запросов  
 * Использование динамических запросов LINQ для упрощения кода  
 
-## [EF Core Database First MVC →](doc-EF-Core-Scaffold.md)
-
-Подключение существующей базы данным к приложения MVC c EF Core
+**[EF Core Database First MVC →](doc-EF-Core-Scaffold.md)**
+Список материалов на эту тему.
 
 
 <br /><br />

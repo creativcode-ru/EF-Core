@@ -8,6 +8,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using Microsoft.EntityFrameworkCore;
+using ConsotoDbFirst.Data;
+
 namespace ConsotoDbFirst
 {
     public class Startup
@@ -23,6 +26,9 @@ namespace ConsotoDbFirst
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            //строка подключения:
+            services.AddDbContext<ConsotodbfirstContext>(options =>
+                   options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -18,7 +18,7 @@
 
 Учебный проект `ContosoUniversity`
 
-## [EF Core Database First](doc/ConsotoDbFirst.md)
+## [EF Core Database First →](doc/ConsotoDbFirst.md)
 Использование расширения Visual Studio для реконструирования классов модели из существующнй БД. Этот мето работает для любых проектов ASP.NET Core: для Razor Pages, для MVC, для Консольного приложения.
 
 ## Razor Pages или MVC?

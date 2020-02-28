@@ -28,7 +28,7 @@
 • [ASP.NET Core Razor Pages против MVC: что создаст лучшие веб-приложения ](https://hackernoon.com/asp-net-core-razor-pages-vs-mvc-which-will-create-better-web-apps-in-2018-bd137ae0acaa)  
 • [Razor Pages vs. MVC - чем отличаются](https://exceptionnotfound.net/razor-pages-how-does-it-differ-from-mvc-in-asp-net-core/)  
 • [Razor Pages против приложений MVC | Форумы ASP.NET](https://forums.asp.net/t/2163056.aspx?Razor+Pages+Vs+MVC+apps)  
-📗 [Примеры для Razor Pages](https://github.com/creativcode-ru/razor-pages-examples/edit/master/README.md)  
+📗 [Примеры для Razor Pages](https://github.com/creativcode-ru/razor-pages-examples)  
 
 <p align="center">
    <a  href="https://vk.com/creativcode_ru" target="_blank" title="Задавайте вопросы ВКонтакте!" >
